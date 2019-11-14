@@ -2,7 +2,7 @@ package com.rocketbnk.nadp.payload;
 
 import java.time.LocalDateTime;
 
-public class Post {
+public class PostRequest {
 
     private LocalDateTime  time;
 
@@ -14,7 +14,7 @@ public class Post {
 
     private String         text_note;
 
-    public Post(LocalDateTime time, Integer userid, String firstname, String lastname, String text_note) {
+    public PostRequest(LocalDateTime time, Integer userid, String firstname, String lastname, String text_note) {
         this.time = time;
         this.userid = userid;
         this.firstname = firstname;
@@ -60,5 +60,10 @@ public class Post {
 
     public void setText_note(String text_note) {
         this.text_note = text_note;
+    }
+
+
+    public String toString() {
+        return  this.getUserid() + this.getFirstname() + this.getLastname() + this.getText_note() ;
     }
 }
