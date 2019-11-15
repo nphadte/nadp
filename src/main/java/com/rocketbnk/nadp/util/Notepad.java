@@ -17,72 +17,26 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Vector;
 
-public class Notepad {
+public class NotePad {
 
-    private static final Logger logger = LoggerFactory.getLogger(Notepad.class);
-    private static final String SAMPLE_NOTEPAD = "./notepad.txt";
-    private Path filePath ;
-    List<PostRequest> list = new ArrayList<PostRequest>();
+    //private static Notepad single_instance = null;
+    private  final static  String  SAMPLE_NOTEPAD = "notepad.txt";
+    private  static Path   filePath ;
 
-    /*
-     *  Singleton
-     */
-    public Notepad() {
-        try{
-            this.filePath = Paths.get(SAMPLE_NOTEPAD);
-        } catch(Exception  e ){
-            e.printStackTrace();
-        }
+
+    //private Vector<PostRequest> Vec = new Vector<PostRequest>();
+    private NotePad(){
     }
 
-    private synchronized void writePost(int userId, String firstname, String lastname, String text_note) {
-        // append the column to the file and also push to the Concurrent ArrayList
 
-        try (BufferedWriter writer = Files.newBufferedWriter(filePath)) {
-            //writer.write(userId + ":" + firstname + ":" + lastname +  ":" +  text_note);
-            writer.append(userId + ":" + firstname + ":" + lastname +  ":" +  text_note + "\n");
-        } catch (IOException ie) {
-            ie.printStackTrace();
+    public  synchronized static Path getFile() {
+        if (filePath == null) {
+            filePath  = Paths.get(SAMPLE_NOTEPAD);
         }
-        refreshList();
+        return  filePath ;
     }
 
-    /*public static Path getFilePath() {
-        return filePath;
-    }*/
 
-    public void  refreshList() {
-        if ( Files.exists(filePath)){
-            try(BufferedReader reader = Files.newBufferedReader(filePath, StandardCharsets.UTF_8)) {
-                String  line = null ;
-                //  repeat this till eof
-                while ( (line = reader.readLine() ) != null) {
-                    String[] tokens = line.split("|");
-                    PostRequest pst = new PostRequest(LocalDateTime.now(), Integer.parseInt(tokens[0]), tokens[1], tokens[2], tokens[3]);
-                    list.add(pst);
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-        this.list = list;
-    }
-
-    public void setList(List<PostRequest> list) {
-        if ( Files.exists(filePath)){
-            try(BufferedReader reader = Files.newBufferedReader(filePath, StandardCharsets.UTF_8)) {
-                String  line = null ;
-                //  repeat this till eof
-                while ( (line = reader.readLine() ) != null) {
-                    String[] tokens = line.split("|");
-                    PostRequest pst = new PostRequest(LocalDateTime.now(), Integer.parseInt(tokens[0]), tokens[1], tokens[2], tokens[3]);
-                    list.add(pst);
-                }
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-        }
-        this.list = list;
-    }
 }

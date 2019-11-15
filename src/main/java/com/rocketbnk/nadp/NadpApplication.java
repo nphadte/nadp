@@ -1,7 +1,7 @@
 package com.rocketbnk.nadp;
 
 import com.rocketbnk.nadp.controller.NotePadController;
-import com.rocketbnk.nadp.util.Notepad;
+import com.rocketbnk.nadp.util.NotePad;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
@@ -25,7 +25,7 @@ public class NadpApplication {
 		/*
 		 *  Initialise by creating the Singleton notepad text file
 		 */
-		Notepad notepad = new Notepad();
+		NotePad.getFile();
 		logger.info("The Singleton File hasb been created is" );
 
 	}
