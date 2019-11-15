@@ -25,11 +25,9 @@ public class NotePad {
     private  final static  String  SAMPLE_NOTEPAD = "notepad.txt";
     private  static Path   filePath ;
 
-
     //private Vector<PostRequest> Vec = new Vector<PostRequest>();
     private NotePad(){
     }
-
 
     public  synchronized static Path getFile() {
         if (filePath == null) {
@@ -37,6 +35,4 @@ public class NotePad {
         }
         return  filePath ;
     }
-
-
 }

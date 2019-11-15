@@ -9,12 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.Vector;
 
 @RestController
 @RequestMapping("/api/notepad")
@@ -25,7 +23,7 @@ public class NotePadController {
     @Autowired
     NotePadService  notePadService;
 
-    @PostMapping
+    @PostMapping("/posts")
     @PreAuthorize("hasRole('ROLE_CREATE_NOTES')")
     public ResponseEntity<?>  createPost(@Valid  @RequestBody  PostRequest  postRequest){
         logger.info( postRequest.toString());
@@ -43,6 +41,13 @@ public class NotePadController {
                 HttpStatus.OK);
     }
 
+    @GetMapping("/posts/{username}")
+    @PreAuthorize("hasRole('ROLE_CREATE_NOTES')")
+    public Vector  createPost(@Valid  @RequestParam  String  username){
+
+        Vector<PostRequest> vec = notePadService.findPostsByUser(username);
+        return vec;
+    }
 
 
 }

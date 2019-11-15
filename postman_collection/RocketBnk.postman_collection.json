@@ -1,0 +1,190 @@
+{
+	"info": {
+		"_postman_id": "f24067c3-6064-4a23-908d-38aae94c6774",
+		"name": "RocketBnk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTczNzAyNTI4LCJleHAiOjE1NzQzMDczMjh9.i8KwyLXJl-cirojozuKg0p-3Ht5Dz1SwGapPhiWqEElcb6MgTmuvjAdEfFKiqsiMvR8mKDZ6aFRYsOxI9SDuYg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "usernameOrEmail",
+									"value": "naresh",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "naresh2019",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/signin",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							]
+						},
+						"description": "Login"
+					},
+					"response": []
+				},
+				{
+					"name": "SignUp",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxIiwiaWF0IjoxNTczNzAyNTI4LCJleHAiOjE1NzQzMDczMjh9.i8KwyLXJl-cirojozuKg0p-3Ht5Dz1SwGapPhiWqEElcb6MgTmuvjAdEfFKiqsiMvR8mKDZ6aFRYsOxI9SDuYg",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usernameOrEmail\" : \"Naresh\",\n\t\"password\"        : \"naresh2019\"\n}"
+						},
+						"url": {
+							"raw": "localhost:8080/api/auth/signup",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						},
+						"description": "Login"
+					},
+					"response": []
+				},
+				{
+					"name": "GetUsers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": ""
+						},
+						"description": "Get User\t"
+					},
+					"response": []
+				},
+				{
+					"name": "Check email Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/checkEmailAvailability?email=\"nareshphadte@hotmail.com\"",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"checkEmailAvailability"
+							],
+							"query": [
+								{
+									"key": "email",
+									"value": "\"nareshphadte@hotmail.com\""
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check UserName Availability",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/user/checkUsernameAvailability?username=\"Naresh\"",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"user",
+								"checkUsernameAvailability"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "\"Naresh\""
+								}
+							]
+						},
+						"description": "Check UserName Availability"
+					},
+					"response": []
+				}
+			],
+			"description": "\n All the requests for tetsing the users"
+		},
+		{
+			"name": "Notepad",
+			"item": []
+		},
+		{
+			"name": "Authentication_Authorization",
+			"item": []
+		}
+	]
+}
