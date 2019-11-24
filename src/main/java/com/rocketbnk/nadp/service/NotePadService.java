@@ -34,7 +34,6 @@ public class NotePadService {
         }
     }
 
-
     public Vector  refreshList() {
         Vector vec = new Vector<PostRequest>();
         if ( Files.exists(filePath)){
@@ -116,7 +115,6 @@ public class NotePadService {
             }
         }
         return vec;
-
     }
 
     public Vector findLatestPosts(){
@@ -136,5 +134,4 @@ public class NotePadService {
         }
         return vec;
     }
-
 }
